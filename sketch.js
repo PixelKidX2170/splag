@@ -1,6 +1,6 @@
 var gs=0
 var tittle
-var MayorNedI, MayorNed, BudI, Bud
+var MayorNedI, MayorNed, BudI, Bud, Old
 var bg
 var mon, ster
 var i
@@ -12,6 +12,7 @@ BudI=loadAnimation("Pictures/BudS.png", "Pictures/BudW1.png", "Pictures/BudW2.pn
 bg=loadImage("Pictures/BG.png")
 tangle=loadImage("Pictures/monster2.png")
 fright=loadImage("Pictures/monster1.png")
+Old=loadImage("Pictures/Oldwoman.png")
 }
 
 function setup() {
@@ -60,6 +61,7 @@ function draw() {
       i.visible=false
       Monster2.depth=gb.depth+1
       Monster1.depth=gb.depth+1
+      Bud.y=320
     }
   }
     if (gs===2){
@@ -73,27 +75,26 @@ function draw() {
       Bud.depth=gb.depth+1
       MayorNed.destroy()
       if(keyDown("space")){
-        Bud.velocityX = -12 ;
-        //playSound("jump.mp3");
+        Bud.y=Bud.y-15 ;
+        gs=3
       }
-      Bud.velocityY=Bud.velocityY+1
-
-
-
-
-
-
-
-
-
+      Bud.velocityY=Bud.velocityY+2
     }
 
 
+    if (gs===3){
+      Oldie=createSprite (900,400, 10,10)
+      Oldie.addImage(Old)
+      Monster1.destroy()
+      Monster2.destroy()
+    }
+
+
+
+
+
+
     drawSprites();
-    
-
-
-
 }
 
 function mouseClicked(){
